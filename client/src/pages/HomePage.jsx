@@ -15,16 +15,21 @@ import {
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Team", href: "#", icon: UsersIcon, current: false },
-  { name: "Projects", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "Documents", href: "#", icon: DocumentDuplicateIcon, current: false },
+  { name: "Rate", href: "#", icon: UsersIcon, current: false },
+  { name: "Wallets", href: "#", icon: FolderIcon, current: false },
+  { name: "Transactions", href: "#", icon: CalendarIcon, current: false },
+  {
+    name: "Beneficiaries",
+    href: "#",
+    icon: DocumentDuplicateIcon,
+    current: false,
+  },
   { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
 ];
 const teams = [
   { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
-  { id: 2, name: "Tailwind Labs", href: "#", initial: "T", current: false },
-  { id: 3, name: "Workcation", href: "#", initial: "W", current: false },
+  { id: 2, name: "Profile", href: "#", initial: "P", current: false },
+  { id: 3, name: "Logout", href: "/login", initial: "L", current: false },
 ];
 
 function classNames(...classes) {
@@ -237,7 +242,7 @@ const HomePage = () => {
                       alt=""
                     />
                     <span className="sr-only">Your profile</span>
-                    <span aria-hidden="true">Tom Cook</span>
+                    <span aria-hidden="true">Onyinyechi Nwankwo</span>
                   </a>
                 </li>
               </ul>
