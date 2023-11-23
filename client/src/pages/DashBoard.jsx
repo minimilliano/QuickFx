@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Rate = ["USD", "CAD", "EUR"];
+const Rate = ["NGN", "USD", "CAD", "EUR"];
 
 const DashBoard = () => {
   const [rate, setRate] = useState("");
