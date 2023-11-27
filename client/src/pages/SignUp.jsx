@@ -1,32 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
-const LogIn = () => {
+const SignUp = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("sign out successful!");
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
-  };
-
-  useEffect(() => {
-    handleLogout();
-  }, []);
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    await signInWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, email, password)
       .then((userData) => {
         const user = userData;
         console.log("Log user", user);
@@ -52,12 +38,12 @@ const LogIn = () => {
                 Get Started with QuickFx
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500">
-                Not a member?{" "}
+                Already a member?{" "}
                 <NavLink
-                  to="/signup"
+                  to="/login"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
-                  Sign Up
+                  Log In
                 </NavLink>
               </p>
             </div>
@@ -91,7 +77,7 @@ const LogIn = () => {
                       htmlFor="password"
                       className="block text-sm font-medium leading-6 text-white"
                     >
-                      Password
+                      Create Password
                     </label>
                     <div className="mt-2">
                       <input
@@ -123,14 +109,7 @@ const LogIn = () => {
                       </label>
                     </div>
 
-                    <div className="text-sm leading-6">
-                      <a
-                        href="#"
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
-                      >
-                        Forgot password?
-                      </a>
-                    </div>
+                    <div className="text-sm leading-6"></div>
                   </div>
 
                   <div>
@@ -138,7 +117,7 @@ const LogIn = () => {
                       onClick={onSubmit}
                       className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                      Log in
+                      Sign Up
                     </button>
                   </div>
                 </form>
@@ -158,4 +137,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignUp;

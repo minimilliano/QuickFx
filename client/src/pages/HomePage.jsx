@@ -2,6 +2,8 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { NavLink } from "react-router-dom";
+
 import {
   Bars3Icon,
   CalendarIcon,
@@ -9,13 +11,12 @@ import {
   DocumentDuplicateIcon,
   FolderIcon,
   HomeIcon,
-  UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Rate", href: "#", icon: UsersIcon, current: false },
+  { name: "Rate", href: "#", icon: ChartPieIcon, current: false },
   { name: "Wallets", href: "#", icon: FolderIcon, current: false },
   { name: "Transactions", href: "#", icon: CalendarIcon, current: false },
   {
@@ -24,12 +25,10 @@ const navigation = [
     icon: DocumentDuplicateIcon,
     current: false,
   },
-  { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
 ];
 const teams = [
-  { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
-  { id: 2, name: "Profile", href: "#", initial: "P", current: false },
-  { id: 3, name: "Logout", href: "/login", initial: "L", current: false },
+  { id: 1, name: "Profile", href: "#", initial: "P", current: false },
+  { id: 2, name: "Logout", href: "/login ", initial: "L", current: false },
 ];
 
 function classNames(...classes) {
@@ -143,8 +142,8 @@ const HomePage = () => {
                           <ul role="list" className="-mx-2 mt-2 space-y-1">
                             {teams.map((team) => (
                               <li key={team.name}>
-                                <a
-                                  href={team.href}
+                                <NavLink
+                                  to={team.href}
                                   className={classNames(
                                     team.current
                                       ? "bg-gray-800 text-white"
@@ -156,7 +155,7 @@ const HomePage = () => {
                                     {team.initial}
                                   </span>
                                   <span className="truncate">{team.name}</span>
-                                </a>
+                                </NavLink>
                               </li>
                             ))}
                           </ul>
