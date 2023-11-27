@@ -4,6 +4,7 @@ import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Transactions from "../components/Transactions";
 
 import {
   Bars3Icon,
@@ -16,10 +17,15 @@ import {
 } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
+  { name: "Dashboard", href: "/dashboard", icon: HomeIcon, current: true },
   { name: "Rate", href: "#", icon: ChartPieIcon, current: false },
   { name: "Wallets", href: "#", icon: FolderIcon, current: false },
-  { name: "Transactions", href: "#", icon: CalendarIcon, current: false },
+  {
+    name: "Transactions",
+    href: "/transactions",
+    icon: CalendarIcon,
+    current: false,
+  },
   {
     name: "Beneficiaries",
     href: "#",
@@ -132,8 +138,8 @@ const HomePage = () => {
                             <ul role="list" className="-mx-2 space-y-1">
                               {navigation.map((item) => (
                                 <li key={item.name}>
-                                  <a
-                                    href={item.href}
+                                  <NavLink
+                                    to={item.href}
                                     className={classNames(
                                       item.current
                                         ? "bg-gray-800 text-white"
@@ -146,15 +152,13 @@ const HomePage = () => {
                                       aria-hidden="true"
                                     />
                                     {item.name}
-                                  </a>
+                                  </NavLink>
                                 </li>
                               ))}
                             </ul>
                           </li>
                           <li>
-                            <div className="text-xs font-semibold leading-6 text-gray-400">
-                              Your teams
-                            </div>
+                            <div className="text-xs font-semibold leading-6 text-gray-400"></div>
                             <ul role="list" className="-mx-2 mt-2 space-y-1">
                               {teams.map((team) => (
                                 <li key={team.name}>
@@ -253,11 +257,15 @@ const HomePage = () => {
                       href="#"
                       className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"
                     >
-                      <img
-                        className="h-8 w-8 rounded-full bg-gray-800"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      <span className="inline-block h-10 w-10 overflow-hidden rounded-full bg-gray-100">
+                        <svg
+                          className="h-full w-full text-gray-300"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                      </span>
                       <span className="sr-only">Your profile</span>
                       <span aria-hidden="true">{userDetails.email}</span>
                     </a>
@@ -290,7 +298,9 @@ const HomePage = () => {
           </div>
 
           <main className="py-10 lg:pl-72">
-            <div className="px-4 sm:px-6 lg:px-8">{/* Your content */}</div>
+            <div className="px-4 sm:px-6 lg:px-8 items-center justify-center">
+              <Transactions />
+            </div>
           </main>
         </div>
       </>
