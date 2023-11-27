@@ -13,7 +13,6 @@ const LogIn = () => {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        console.log("sign out successful!");
         navigate("/login");
       })
       .catch((error) => {
@@ -28,9 +27,7 @@ const LogIn = () => {
     e.preventDefault();
 
     await signInWithEmailAndPassword(auth, email, password)
-      .then((userData) => {
-        const user = userData;
-        console.log("Log user", user);
+      .then(() => {
         navigate("/home");
       })
       .catch((error) => {

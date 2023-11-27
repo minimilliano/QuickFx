@@ -14,9 +14,7 @@ const SignUp = () => {
     e.preventDefault();
 
     await createUserWithEmailAndPassword(auth, email, password)
-      .then((userData) => {
-        const user = userData;
-        console.log("Log user", user);
+      .then(() => {
         navigate("/home");
       })
       .catch((error) => {
