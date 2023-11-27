@@ -9,13 +9,12 @@ import {
   DocumentDuplicateIcon,
   FolderIcon,
   HomeIcon,
-  UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Rate", href: "#", icon: UsersIcon, current: false },
+  { name: "Rate", href: "#", icon: ChartPieIcon, current: false },
   { name: "Wallets", href: "#", icon: FolderIcon, current: false },
   { name: "Transactions", href: "#", icon: CalendarIcon, current: false },
   {
@@ -24,12 +23,10 @@ const navigation = [
     icon: DocumentDuplicateIcon,
     current: false,
   },
-  { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
 ];
 const teams = [
-  { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
-  { id: 2, name: "Profile", href: "#", initial: "P", current: false },
-  { id: 3, name: "Logout", href: "/login", initial: "L", current: false },
+  { id: 1, name: "Profile", href: "#", initial: "P", current: false },
+  { id: 2, name: "Logout", href: "/login ", initial: "L", current: false },
 ];
 
 function classNames(...classes) {
