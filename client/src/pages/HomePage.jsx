@@ -2,6 +2,8 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { NavLink } from "react-router-dom";
+
 import {
   Bars3Icon,
   CalendarIcon,
@@ -140,8 +142,8 @@ const HomePage = () => {
                           <ul role="list" className="-mx-2 mt-2 space-y-1">
                             {teams.map((team) => (
                               <li key={team.name}>
-                                <a
-                                  href={team.href}
+                                <NavLink
+                                  to={team.href}
                                   className={classNames(
                                     team.current
                                       ? "bg-gray-800 text-white"
@@ -153,7 +155,7 @@ const HomePage = () => {
                                     {team.initial}
                                   </span>
                                   <span className="truncate">{team.name}</span>
-                                </a>
+                                </NavLink>
                               </li>
                             ))}
                           </ul>
