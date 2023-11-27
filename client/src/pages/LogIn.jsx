@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import forexImg from "../images/forex.jpg";
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const LogIn = () => {
@@ -12,7 +13,6 @@ const LogIn = () => {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        console.log("sign out successful!");
         navigate("/login");
       })
       .catch((error) => {
@@ -27,9 +27,7 @@ const LogIn = () => {
     e.preventDefault();
 
     await signInWithEmailAndPassword(auth, email, password)
-      .then((userData) => {
-        const user = userData;
-        console.log("Log user", user);
+      .then(() => {
         navigate("/home");
       })
       .catch((error) => {
@@ -49,7 +47,7 @@ const LogIn = () => {
                 alt="Your Company"
               />
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-white">
-                Get Started with QuickFx
+                QuickFx User Log In
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500">
                 Not a member?{" "}
@@ -149,8 +147,8 @@ const LogIn = () => {
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
             className="absolute inset-0 h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
-            alt=""
+            src={forexImg}
+            alt="onboarding"
           />
         </div>
       </div>
