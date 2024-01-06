@@ -5,6 +5,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Transactions from "../components/Transactions";
+import Reviews from "../components/Reviews";
+import Conversions from "../components/Conversions";
 
 import {
   Bars3Icon,
@@ -62,6 +64,7 @@ const HomePage = () => {
 
   useEffect(() => {
     checkAuthUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (authUser) {
@@ -298,8 +301,10 @@ const HomePage = () => {
           </div>
 
           <main className="py-10 lg:pl-72">
-            <div className="px-4 sm:px-6 lg:px-8 items-center justify-center">
+            <div className="px-4 sm:px-6 lg:px-8 items-center justify-center space-y-5">
               <Transactions />
+              <Conversions />
+              <Reviews />
             </div>
           </main>
         </div>
